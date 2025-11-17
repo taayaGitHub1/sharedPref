@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Summit College"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/collegeLogo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/newsummit"
+        android:contentDescription="College Logo"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Add Data Button -->
+    <Button
+        android:id="@+id/addDataButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Data"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Label TextView -->
+    <TextView
+        android:id="@+id/totalStudentCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Students:"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <!-- ListView -->
+    <ListView
+        android:id="@+id/listViewData"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+</LinearLayout>
