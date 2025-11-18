@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ActivityHome extends AppCompatActivity {
@@ -25,7 +26,7 @@ public class ActivityHome extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         homeAddData = findViewById(R.id.addDataButton);
-        homeTotalStudentCount= findViewById(R.id.totalStudentCount);
+        homeTotalStudentCount = findViewById(R.id.totalStudentCount);
         homeListViewData = findViewById(R.id.listViewData);
 
         homeAddData.setOnClickListener(new View.OnClickListener() {
@@ -33,14 +34,14 @@ public class ActivityHome extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ActivityHome.this);
                 LayoutInflater inflater = getLayoutInflater();
-                View convetview = inflater.inflate(R.layout.add_data,null);
+                View convetview = inflater.inflate(R.layout.add_data, null);
                 builder.setView(convetview);
                 AlertDialog a = builder.create();
                 a.show();
 
                 //add_data ko component haru tanera link garya using convetview by id
-                EditText name,faculty,address;
-                Button cancelbtn,savebtn;
+                EditText name, faculty, address;
+                Button cancelbtn, savebtn;
 
                 name = convetview.findViewById(R.id.Name);
                 faculty = convetview.findViewById(R.id.Faculty);
@@ -63,10 +64,21 @@ public class ActivityHome extends AppCompatActivity {
                         data.setAddress(address.getText().toString());
                         data.setFaculty(faculty.getText().toString());
 
-                        DatabaseHelper he= new DatabaseHelper(ActivityHome.this);
+                        DatabaseHelper he = new DatabaseHelper(ActivityHome.this);
                         he.insertData(data);
+                        a.dismiss();
                     }
                 });
             }
         });
-}}
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        ArrayList<DatabaseModel> data = new ArrayList<>();
+        DatabaseHelper db = new DatabaseHelper(ActivityHome.this);
+        data = db.readData();
+        homeTotalStudentCount.setText("total students = "+data.size());
+    }
+}

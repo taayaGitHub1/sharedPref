@@ -4,8 +4,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseModel {
+
     private int id;
     private String name;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private String address;
     private String faculty;
 
