@@ -80,5 +80,6 @@ public class ActivityHome extends AppCompatActivity {
         DatabaseHelper db = new DatabaseHelper(ActivityHome.this);
         data = db.readData();
         homeTotalStudentCount.setText("total students = "+data.size());
+        homeListViewData.setAdapter(new CustomAdapter(ActivityHome.this,data));
     }
 }
